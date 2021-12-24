@@ -7,12 +7,12 @@ const app: Application = express();
 app.use('/', routes);
 
 /**Error handlers */
-app.use((req, res, next) => {
+app.use((req: Request, res: Response) => {
     const error = new Error('Not found');
     res.status(404).json({message: error.message
     });
 });
 
-const PORT:any = process.env.PORT || 3000;
+const PORT:unknown | number = process.env.PORT || 3000;
 
 app.listen(PORT, () => console.log('listening on port ' + PORT))
